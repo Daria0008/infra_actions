@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          port: 22
+          script: whoami
           script: |
             sudo docker pull ds1011/infraactions
             sudo docker stop $(sudo docker ps -a -q)
