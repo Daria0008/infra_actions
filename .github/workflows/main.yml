@@ -43,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v2 
         with:
           push: true
-          tags: ds1011/ds1011:latest
+          tags: ds1011/infraactions:latest
   deploy:
       runs-on: ubuntu-latest
       needs: build_and_push_to_docker_hub
@@ -57,6 +57,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             whoami
-            sudo docker pull ds1011/infraactions
+            sudo docker pull ds1011/infraactions:latest
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 ds1011/infraactions 
+            sudo docker run --rm -d -p 5000:5000 ds1011/infraactions:latest
